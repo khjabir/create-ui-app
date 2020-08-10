@@ -158,7 +158,7 @@ exports.create = async (appName, appDirectory) => {
   await commitGit();
 
   console.log(
-    `Created your new React app with settings: ${selectedConfigList
+    `Created your new Next app with settings: ${selectedConfigList
       .map(_ => _.name)
       .join(", ")}. cd into ${appName} to get started.`.green
   );
