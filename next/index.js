@@ -14,7 +14,7 @@ const askQuestions = async () => {
     type: "list",
     name: config.name,
     message: config.question,
-    choices: ["y", "n"]
+    choices: ["yes", "no"]
   }));
 
   const answers = await inquirer.prompt(questions);
@@ -22,7 +22,7 @@ const askQuestions = async () => {
   reactConfigList.forEach(config => {
     const matchingAnswer = answers[config.name];
 
-    if (matchingAnswer && matchingAnswer === "y") {
+    if (matchingAnswer && matchingAnswer === "yes") {
       selectedConfigList.push(config);
     }
   });
@@ -35,7 +35,7 @@ const createNextApp = appName => {
 
   return new Promise((resolve, reject) => {
     shell.exec(
-      `npx create-next-app ${appName} -y --use-npm`,
+      `npx create-next-app ${appName} -y`,
       () => {
         const cdRes = shell.cd(appName);
 

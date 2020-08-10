@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const inquirer = require("inquirer");
-const reactApp = require("./react");
+const next = require("./next");
 
 const askAppQuestions = () => {
   const questions = [
@@ -21,7 +21,7 @@ const askAppQuestions = () => {
 };
 
 const appDict = {
-  react: reactApp
+  next
 };
 
 const run = async () => {

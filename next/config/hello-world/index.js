@@ -9,6 +9,6 @@ module.exports = {
     { key: "dummyKey", value: "Package JSON edit test" },
   ],
   templates: [
-    { path: "src/components/hello-world.ts", file: helloWorld },
+    { path: "src/components/helloWorld.tsx", file: helloWorld },
   ]
 };

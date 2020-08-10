@@ -10,8 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "colors": "^1.4.0",
     "fs-extra": "^9.0.1",
     "inquirer": "^7.3.3",
-    "ora": "^5.0.0"
+    "lodash.set": "^4.3.2",
+    "ora": "^5.0.0",
+    "shelljs": "^0.8.4"
   }
 }
