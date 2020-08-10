@@ -1,6 +1,6 @@
 {
   "name": "create-ui-app",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -24,5 +24,7 @@
   "bin": {
     "": "./index.js"
   },
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
 }
