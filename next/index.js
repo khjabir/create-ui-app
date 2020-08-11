@@ -80,7 +80,7 @@ const installPackages = async configList => {
 };
 
 const updatePackageDotJson = configList => {
-  const spinner = ora("✍️Updating package.json scripts...");
+  const spinner = ora("✍️ Updating package.json scripts...");
 
   let packageEntries = configList.reduce(
     (acc, val) => [...acc, ...val.packageEntries],
@@ -165,22 +165,29 @@ exports.create = async (appName, appDirectory) => {
   );
 
   console.log(`
-  you can run several commands:
+  you can run several commands:`);
+  console.log(`
+  yarn dev`.cyan);
+  console.log(`
+    Starts the development server.`);
 
-  yarn dev
-    Starts the development server.
+  console.log(`
+  yarn build`.cyan);
+  console.log(`
+    Builds the app for production.`);
+  
+  console.log(`
+  yarn start`.cyan);
+  console.log(`
+    Runs the built app in production mode.`);
 
-  yarn build
-    Builds the app for production.
+  console.log(`
+  We suggest that you begin by typing:`);
 
-  yarn start
-    Runs the built app in production mode.
-
-  We suggest that you begin by typing:
-
-    cd first-app
+  console.log(`
+    cd ${appName}
     yarn dev
-  `)
+  `.cyan);
 
   return true;
 };
