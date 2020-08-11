@@ -80,7 +80,7 @@ const installPackages = async configList => {
 };
 
 const updatePackageDotJson = configList => {
-  const spinner = ora("✍️ Updating package.json scripts...");
+  const spinner = ora("✍️  Updating package.json scripts...");
 
   let packageEntries = configList.reduce(
     (acc, val) => [...acc, ...val.packageEntries],
@@ -112,7 +112,7 @@ const updatePackageDotJson = configList => {
 };
 
 const addTemplates = configList => {
-  const spinner = ora("📝Adding templates...");
+  const spinner = ora("📝 Adding templates...");
 
   const templateList = configList.reduce(
     (acc, val) => [...acc, ...val.templates],
@@ -135,7 +135,7 @@ const addTemplates = configList => {
 };
 
 const commitGit = () => {
-  const spinner = ora("🔐Committing files to Git...");
+  const spinner = ora("🔐 Committing files to Git...");
 
   return new Promise(resolve => {
     shell.exec(
@@ -157,37 +157,27 @@ exports.create = async (appName, appDirectory) => {
   await addTemplates(selectedConfigList);
   await commitGit();
 
-  console.log(`🎉Success! `.green);
+  console.log(`
+  🎉  Success! `.green);
   console.log(
-    `✨Created your new Next app with settings: ${selectedConfigList
+    `✨ Created your new Next app with settings: ${selectedConfigList
       .map(_ => _.name)
       .join(", ")}. cd into ${appName} to get started.`.green
   );
 
-  console.log(`
-  you can run several commands:`);
-  console.log(`
-  yarn dev`.cyan);
-  console.log(`
-    Starts the development server.`);
+  console.log(`\n\tyou can run several commands:`);
+  console.log(`\tyarn dev`.cyan);
+  console.log(`\t\tStarts the development server.`);
 
-  console.log(`
-  yarn build`.cyan);
-  console.log(`
-    Builds the app for production.`);
+  console.log(`\n\tyarn build`.cyan);
+  console.log(`\t\tBuilds the app for production.`);
   
-  console.log(`
-  yarn start`.cyan);
-  console.log(`
-    Runs the built app in production mode.`);
+  console.log(`\n\tyarn start`.cyan);
+  console.log(`\t\tRuns the built app in production mode.`);
 
-  console.log(`
-  We suggest that you begin by typing:`);
+  console.log(`\tWe suggest that you begin by typing:`);
 
-  console.log(`
-    cd ${appName}
-    yarn dev
-  `.cyan);
+  console.log(`\n\t\tcd ${appName}\n\t\tyarn dev`.cyan);
 
   return true;
 };
