@@ -172,7 +172,7 @@ exports.create = async (appName, appDirectory) => {
 
   console.log(`\n\tWe suggest that you begin by typing:`);
 
-  console.log(`\n\tcd ${appName}\n\t\tyarn dev\n`.cyan);
+  console.log(`\n\tcd ${appName}\n\tyarn dev\n`.cyan);
 
   return true;
 };
