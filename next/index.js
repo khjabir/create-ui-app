@@ -157,15 +157,13 @@ exports.create = async (appName, appDirectory) => {
   await addTemplates(selectedConfigList);
   await commitGit();
 
-  console.log(`
-  🎉  Success! `.green);
-  console.log(
-    `✨ Created your new Next app with settings: ${selectedConfigList
+  console.log(`\n🎉 Success! `.green);
+  console.log(`✨ Created your new Next app with settings: ${selectedConfigList
       .map(_ => _.name)
-      .join(", ")}. cd into ${appName} to get started.`.green
+      .join(", ")}.\ncd into ${appName} to get started.`.green
   );
 
-  console.log(`\n\tyou can run several commands:`);
+  console.log(`\n\tyou can run several commands:\n`);
   console.log(`\tyarn dev`.cyan);
   console.log(`\t\tStarts the development server.`);
 
@@ -175,9 +173,9 @@ exports.create = async (appName, appDirectory) => {
   console.log(`\n\tyarn start`.cyan);
   console.log(`\t\tRuns the built app in production mode.`);
 
-  console.log(`\tWe suggest that you begin by typing:`);
+  console.log(`\n\tWe suggest that you begin by typing:`);
 
-  console.log(`\n\t\tcd ${appName}\n\t\tyarn dev`.cyan);
+  console.log(`\t\tcd ${appName}\n\t\tyarn dev\n`.cyan);
 
   return true;
 };
