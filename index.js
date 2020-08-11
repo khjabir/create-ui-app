@@ -37,7 +37,7 @@ const run = async () => {
 
   if (!app) {
     console.log(
-      `App type: ${appType} is not yet supported by this CLI tool.`.red
+      `App type: ${appType} is currently not yet supported by this CLI tool.`.red
     );
     return process.exit(0);
   }

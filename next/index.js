@@ -31,7 +31,7 @@ const askQuestions = async () => {
 };
 
 const createNextApp = appName => {
-  const spinner = ora("Running create-next-app...").start();
+  const spinner = ora("Running create-next-app... (May take more than 60 seconds)").start();
 
   return new Promise((resolve, reject) => {
     shell.exec(
@@ -61,7 +61,7 @@ const installPackages = async configList => {
   });
 
   await new Promise(resolve => {
-    const spinner = ora("Installing additional dependencies...").start();
+    const spinner = ora("🚚 Installing additional dependencies...").start();
 
     shell.exec(`npm install --save ${dependencies.join(" ")}`, () => {
       spinner.succeed();
@@ -70,7 +70,7 @@ const installPackages = async configList => {
   });
 
   await new Promise(resolve => {
-    const spinner = ora("Installing additional dev dependencies...").start();
+    const spinner = ora("🚚 Installing additional dev dependencies...").start();
 
     shell.exec(`npm install --save-dev ${devDependencies.join(" ")}`, () => {
       spinner.succeed();
@@ -80,7 +80,7 @@ const installPackages = async configList => {
 };
 
 const updatePackageDotJson = configList => {
-  const spinner = ora("Updating package.json scripts...");
+  const spinner = ora("✍️Updating package.json scripts...");
 
   let packageEntries = configList.reduce(
     (acc, val) => [...acc, ...val.packageEntries],
@@ -112,7 +112,7 @@ const updatePackageDotJson = configList => {
 };
 
 const addTemplates = configList => {
-  const spinner = ora("Adding templates...");
+  const spinner = ora("📝Adding templates...");
 
   const templateList = configList.reduce(
     (acc, val) => [...acc, ...val.templates],
@@ -135,7 +135,7 @@ const addTemplates = configList => {
 };
 
 const commitGit = () => {
-  const spinner = ora("Committing files to Git...");
+  const spinner = ora("🔐Committing files to Git...");
 
   return new Promise(resolve => {
     shell.exec(
@@ -157,11 +157,30 @@ exports.create = async (appName, appDirectory) => {
   await addTemplates(selectedConfigList);
   await commitGit();
 
+  console.log(`🎉Success! `.green);
   console.log(
-    `Created your new Next app with settings: ${selectedConfigList
+    `✨Created your new Next app with settings: ${selectedConfigList
       .map(_ => _.name)
       .join(", ")}. cd into ${appName} to get started.`.green
   );
+
+  console.log(`
+  you can run several commands:
+
+  yarn dev
+    Starts the development server.
+
+  yarn build
+    Builds the app for production.
+
+  yarn start
+    Runs the built app in production mode.
+
+  We suggest that you begin by typing:
+
+    cd first-app
+    yarn dev
+  `)
 
   return true;
 };
