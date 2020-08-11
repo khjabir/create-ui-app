@@ -31,6 +31,7 @@ const askQuestions = async () => {
 };
 
 const createNextApp = appName => {
+  console.log(`\n`);
   const spinner = ora("Running create-next-app... (May take more than 60 seconds)").start();
 
   return new Promise((resolve, reject) => {
@@ -70,7 +71,7 @@ const installPackages = async configList => {
   });
 
   await new Promise(resolve => {
-    const spinner = ora("🚚 Installing additional dev dependencies...").start();
+    const spinner = ora("👨‍💻 Installing additional dev dependencies...").start();
 
     shell.exec(`npm install --save-dev ${devDependencies.join(" ")}`, () => {
       spinner.succeed();
@@ -157,11 +158,7 @@ exports.create = async (appName, appDirectory) => {
   await addTemplates(selectedConfigList);
   await commitGit();
 
-  console.log(`\n🎉 Success! `.green);
-  console.log(`✨ Created your new Next app with settings: ${selectedConfigList
-      .map(_ => _.name)
-      .join(", ")}.\ncd into ${appName} to get started.`.green
-  );
+  console.log(`\n🎉 Success!\n✨ Created your new Next app with settings: ${selectedConfigList.map(_ => _.name).join(", ")}.`.green);
 
   console.log(`\n\tyou can run several commands:\n`);
   console.log(`\tyarn dev`.cyan);
@@ -175,7 +172,7 @@ exports.create = async (appName, appDirectory) => {
 
   console.log(`\n\tWe suggest that you begin by typing:`);
 
-  console.log(`\t\tcd ${appName}\n\t\tyarn dev\n`.cyan);
+  console.log(`\n\tcd ${appName}\n\t\tyarn dev\n`.cyan);
 
   return true;
 };
